@@ -150,7 +150,7 @@ supervisor.worker.start.timeout.secs: 120
 #how long between heartbeats until supervisor considers that worker dead and tries to restart it
 supervisor.worker.timeout.secs: 30
 #how many seconds to sleep for before shutting down threads on worker
-supervisor.worker.shutdown.sleep.secs: 1
+supervisor.worker.shutdown.sleep.secs: 3
 #how frequently the supervisor checks on the status of the processes it's monitoring and restarts if necessary
 supervisor.monitor.frequency.secs: 3
 #how frequently the supervisor heartbeats to the cluster state (for nimbus)
@@ -186,6 +186,7 @@ topology.worker.receiver.thread.count: 1
 task.heartbeat.frequency.secs: 3
 task.refresh.poll.secs: 10
 task.credentials.poll.secs: 30
+task.backpressure.poll.secs: 30
 
 # now should be null by default
 topology.backpressure.enable: false
@@ -258,7 +259,7 @@ topology.bolts.outgoing.overflow.buffer.enable: false
 topology.disruptor.wait.timeout.millis: 1000
 topology.disruptor.batch.size: 100
 topology.disruptor.batch.timeout.millis: 1
-topology.disable.loadaware: false
+topology.disable.loadaware.messaging: false
 topology.state.checkpoint.interval.ms: 1000
 
 # Configs for Resource Aware Scheduler
