@@ -1,7 +1,7 @@
 FROM phusion/baseimage
 MAINTAINER Fedele Mantuano "mantuano.fedele@gmail.com"
-ENV STORM_VER="1.0.2"
-ENV REFRESHED_AT="2016-12-21" \
+ENV STORM_VER="1.0.3"
+ENV REFRESHED_AT="2017-02-15" \
     STORM_PATH="/opt/apache-storm-${STORM_VER}"
 LABEL storm_version=${STORM_VER} \
     description="Apache Storm: zookeeper, nimbus, ui, supervisor" \
