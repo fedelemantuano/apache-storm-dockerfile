@@ -1,7 +1,7 @@
 FROM phusion/baseimage
 MAINTAINER Fedele Mantuano "mantuano.fedele@gmail.com"
 ENV STORM_VER="1.0.3"
-ENV REFRESHED_AT="2017-02-15" \
+ENV REFRESHED_AT="2017-03-01" \
     STORM_PATH="/opt/apache-storm-${STORM_VER}"
 LABEL storm_version=${STORM_VER} \
     description="Apache Storm: zookeeper, nimbus, ui, supervisor" \
@@ -31,4 +31,5 @@ COPY run/supervisor.sh /etc/service/supervisor/run
 COPY run/ui.sh /etc/service/ui/run
 COPY zookeeper/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 COPY storm/storm.yaml $STORM_PATH/conf/storm.yaml
+COPY logrotate.d/* /etc/logrotate.d/
 EXPOSE 8080
