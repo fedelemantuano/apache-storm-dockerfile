@@ -1,0 +1,28 @@
+sudo: required
+
+services:
+    - docker
+
+branches:
+    only:
+        - master
+
+before_install:
+
+    # get last version
+    - export VER=$(git describe --tags --abbrev=0)
+    - echo Apache Storm version $VER
+
+    # make images
+    - docker build -t $DOCKER_USERNAME/apache-storm:$VER .
+
+script:
+    - echo Apache Storm version $VER
+
+after_success:
+    - echo Apache Storm version $VER
+    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    - docker push $DOCKER_USERNAME/apache-storm:$VER
+
+notifications:
+    slack: spamscope:$SLACK_KEY
