@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fedelemantuano/apache-storm-dockerfile.svg?branch=master)](https://travis-ci.org/fedelemantuano/apache-storm-dockerfile)
+
 # apache-storm-dockerfile
 
 **apache-storm-dockerfile** is a dockerfile to build [fmantuano/apache-storm](https://hub.docker.com/r/fmantuano/apache-storm/) Docker image.
