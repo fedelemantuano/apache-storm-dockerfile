@@ -15,7 +15,7 @@ For defaults I used [defaults.yaml](https://github.com/apache/storm/blob/v1.0.2/
 To use it, create a new instance as usual:
 
 ```
-$ sudo docker run --name storm -p 8000:8000 -d fmantuano/apache-storm
+$ sudo docker run --name storm -p 8080:8080 -d fmantuano/apache-storm
 ```
 
 Once the docker instance is created, you can control it by running:
