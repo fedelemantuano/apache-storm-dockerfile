@@ -1,3 +1,4 @@
+---
 sudo: required
 
 services:
@@ -25,4 +26,6 @@ after_success:
     - docker push $DOCKER_USERNAME/apache-storm:$VER
 
 notifications:
-    slack: spamscope:$SLACK_KEY
+    email: false
+    slack:
+        secure: "NvSPKp7f0A46Qr34wHC0pLTm+1fUlvFVa+/zUJ0VQZ13CQVWl+LLiX5ENRJkEB4VMHVx5BRF9PUtiQvFpv6JqcPc68JUN9zkquBY48oMTki77IiTl02hE3JngZUXUaSuKfM6lOXDcDftyectuqBk9QUiieRfJ+lQ3fVinuhN5dYkvYpIXU9gYI+5J7wvXFPVr3sqGOLp1uYBgB3G59jzt2os0mcHjG1oQK2q/JuOC6K4LxNiymcpowhRN0y+ZFUnXqFjaApkGd9tkWD1R8ZG2VH1aXUdlukSXn8WqFd82D5PdzetAdhWW5aNLmLMYhKnvKfVlYfrjzqYeJVWtPgoWecC6+kEAZCbzzv5Um6t7HNrkX9F7E0Z3wq5WU30lEo595cxwVacN+s0NXyOvM3gghKo50AaX8i1/TzAuX9BAYkODvU2yvrE2Bjp+xyAeAZeQy5pK6MkCxyc6aebxMmbOx80mJoN5u7vxXFJASfm15xQoL9414pB+jLNBW033Ai1fwmQ0U3surKUXOf/c4U5xHrEXSqPArV7TWU/JhwVHpDN6qlcQCHw3oDElodnbHZX4S8itANOQzd+jqyzWxbhmleXyQYzkVF9mQKaoaUxoCnV7i81rUXgI+d+0IsHiI67VUPd54uVXXtIVEQtmRR8RXrT5pKUAxtQee5UQGibByI="

@@ -22,7 +22,7 @@ java.library.path: "/usr/local/lib:/opt/local/lib:/usr/lib"
 
 ### storm.* configs are general configurations
 # the local dir is where jars are kept
-storm.local.dir: "storm-local"
+storm.local.dir: "/mnt/storm"
 storm.log4j2.conf.dir: "log4j2"
 storm.zookeeper.servers:
     - "localhost"
@@ -167,7 +167,7 @@ supervisor.memory.capacity.mb: 3072.0
 supervisor.cpu.capacity: 400.0
 
 ### worker.* configs are for task workers
-worker.heap.memory.mb: 1024
+worker.heap.memory.mb: 2048
 worker.childopts: "-Xmx%HEAP-MEM%m -XX:+PrintGCDetails -Xloggc:artifacts/gc.log -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=10 -XX:GCLogFileSize=1M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=artifacts/heapdump"
 worker.gc.childopts: ""
 
@@ -271,7 +271,7 @@ topology.priority: 29
 topology.component.resources.onheap.memory.mb: 128.0
 topology.component.resources.offheap.memory.mb: 0.0
 topology.component.cpu.pcore.percent: 10.0
-topology.worker.max.heap.size.mb: 768.0
+topology.worker.max.heap.size.mb: 1024.0
 topology.scheduler.strategy: "org.apache.storm.scheduler.resource.strategies.scheduling.DefaultResourceAwareStrategy"
 resource.aware.scheduler.eviction.strategy: "org.apache.storm.scheduler.resource.strategies.eviction.DefaultEvictionStrategy"
 resource.aware.scheduler.priority.strategy: "org.apache.storm.scheduler.resource.strategies.priority.DefaultSchedulingPriorityStrategy"
