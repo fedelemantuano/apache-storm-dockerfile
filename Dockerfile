@@ -16,7 +16,7 @@ RUN mkdir -p /etc/service/zookeeperd \
     && apt-get -yqq upgrade -o Dpkg::Options::="--force-confold" \
     && apt-get -yqq --no-install-recommends install \
         curl \
-        openjdk-9-jre \
+        openjdk-8-jre \
         python \
         zookeeperd \
     && apt-get clean \
@@ -25,9 +25,7 @@ RUN mkdir -p /etc/service/zookeeperd \
     && dpkg -l | grep ^rc | awk '{print $2}' | xargs dpkg --purge \
     && curl -o ${STORM_PATH}.tar.gz http://mirror.nohup.it/apache/storm/apache-storm-${STORM_VER}/apache-storm-${STORM_VER}.tar.gz \
     && tar -zxf ${STORM_PATH}.tar.gz -C /opt \
-    && rm -f ${STORM_PATH}.tar.gz \
-    && mkdir -p usr/lib/jvm/java-9-openjdk-amd64/conf/management \
-    && ln -s /etc/java-9-openjdk/management/management.properties /usr/lib/jvm/java-9-openjdk-amd64/conf/management/management.properties
+    && rm -f ${STORM_PATH}.tar.gz
 COPY run/zookeeperd.sh /etc/service/zookeeperd/run
 COPY run/nimbus.sh /etc/service/nimbus/run
 COPY run/supervisor.sh /etc/service/supervisor/run
