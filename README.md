@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/fedelemantuano/apache-storm-dockerfile.svg?branch=master)](https://travis-ci.org/fedelemantuano/apache-storm-dockerfile)
+[![](https://images.microbadger.com/badges/image/fmantuano/apache-storm.svg)](https://microbadger.com/images/fmantuano/apache-storm "Get your own image badge on microbadger.com")
 
 # apache-storm-dockerfile
 
@@ -10,6 +11,7 @@ For defaults I used [defaults.yaml](https://github.com/apache/storm/blob/v1.0.2/
   - Nimbus
   - Supervisor
   - Storm UI on port 8080
+  - Storm logviewer on port 8000
 
 
 To use it, create a new instance as usual:

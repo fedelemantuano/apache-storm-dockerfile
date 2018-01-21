@@ -4,26 +4,39 @@ sudo: required
 services:
     - docker
 
-branches:
-    only:
-        - master
-
 before_install:
 
-    # get last version
-    - export VER=$(git describe --tags --abbrev=0)
-    - echo Apache Storm version $VER
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then
+          # get last version
+          export VER=$(git describe --tags --abbrev=0);
 
-    # make images
-    - docker build -t $DOCKER_USERNAME/apache-storm:$VER .
+          # make images
+          docker build -t $DOCKER_USERNAME/apache-storm .;
+          docker build -t $DOCKER_USERNAME/apache-storm:$VER .;
+
+          # run version
+          docker run --rm --name storm_test $DOCKER_USERNAME/apache-storm storm version;
+      fi
+
+    - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+          docker build -t $DOCKER_USERNAME/apache-storm:develop .;
+          docker run --rm --name storm_test $DOCKER_USERNAME/apache-storm:develop storm version;
+      fi
 
 script:
     - echo Apache Storm version $VER
 
 after_success:
-    - echo Apache Storm version $VER
-    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-    - docker push $DOCKER_USERNAME/apache-storm:$VER
+    - if [ "$TRAVIS_BRANCH" == "master" ]; then
+        docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+        docker push $DOCKER_USERNAME/apache-storm:$VER;
+        docker push $DOCKER_USERNAME/apache-storm;
+      fi
+
+    - if [ "$TRAVIS_BRANCH" == "develop" ]; then
+        docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+        docker push $DOCKER_USERNAME/apache-storm:develop;
+      fi
 
 notifications:
     email: false
