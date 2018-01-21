@@ -5,7 +5,6 @@ services:
     - docker
 
 before_install:
-
     - >
         if [ "$TRAVIS_BRANCH" == "master" ]; then
             # get last version
@@ -14,15 +13,22 @@ before_install:
             # make images
             docker build -t $DOCKER_USERNAME/apache-storm .;
             docker build -t $DOCKER_USERNAME/apache-storm:$VER .;
-
-            # run version
-            docker run --rm --name storm_test $DOCKER_USERNAME/apache-storm storm version;
         fi
 
     - >
         if [ "$TRAVIS_BRANCH" == "develop" ]; then
             docker build -t $DOCKER_USERNAME/apache-storm:develop .;
-            docker run --rm --name storm_test $DOCKER_USERNAME/apache-storm:develop storm version;
+        fi
+
+script:
+    - >
+        if [ "$TRAVIS_BRANCH" == "master" ]; then
+            docker run --rm --name storm $DOCKER_USERNAME/apache-storm storm version;
+        fi
+
+    - >
+        if [ "$TRAVIS_BRANCH" == "develop" ]; then
+            docker run --rm --name storm $DOCKER_USERNAME/apache-storm:develop storm version;
         fi
 
 after_success:
