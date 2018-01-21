@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/bin/bash -c "$STORM_PATH/bin/storm supervisor"
+/bin/bash -c "storm supervisor"

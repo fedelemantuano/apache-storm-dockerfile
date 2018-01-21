@@ -4,12 +4,9 @@ version: '2.1'
 services:
     # Apache Storm
     storm:
-        image: fmantuano/apache-storm:1.1.1
+        image: fmantuano/apache-storm:develop
         container_name: storm
         mem_limit: 4g
-        dns:
-            - 8.8.8.8
-            - 8.8.4.4
         ports:
             - "127.0.0.1:8080:8080"
             - "127.0.0.1:8000:8000"

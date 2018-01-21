@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/bin/bash -c "$STORM_PATH/bin/storm nimbus"
+/bin/bash -c "storm nimbus"

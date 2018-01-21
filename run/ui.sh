@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/bin/bash -c "$STORM_PATH/bin/storm ui"
+/bin/bash -c "storm ui"
