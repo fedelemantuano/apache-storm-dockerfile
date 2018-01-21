@@ -6,22 +6,24 @@ services:
 
 before_install:
 
-    - if [ "$TRAVIS_BRANCH" == "master" ]; then
-          # get last version
-          export VER=$(git describe --tags --abbrev=0);
+    - >
+        if [ "$TRAVIS_BRANCH" == "master" ]; then
+            # get last version
+            export VER=$(git describe --tags --abbrev=0);
 
-          # make images
-          docker build -t $DOCKER_USERNAME/apache-storm .;
-          docker build -t $DOCKER_USERNAME/apache-storm:$VER .;
+            # make images
+            docker build -t $DOCKER_USERNAME/apache-storm .;
+            docker build -t $DOCKER_USERNAME/apache-storm:$VER .;
 
-          # run version
-          docker run --rm --name storm_test $DOCKER_USERNAME/apache-storm storm version;
-      fi
+            # run version
+            docker run --rm --name storm_test $DOCKER_USERNAME/apache-storm storm version;
+        fi
 
-    - if [ "$TRAVIS_BRANCH" == "develop" ]; then
-          docker build -t $DOCKER_USERNAME/apache-storm:develop .;
-          docker run --rm --name storm_test $DOCKER_USERNAME/apache-storm:develop storm version;
-      fi
+    - >
+        if [ "$TRAVIS_BRANCH" == "develop" ]; then
+            docker build -t $DOCKER_USERNAME/apache-storm:develop .;
+            docker run --rm --name storm_test $DOCKER_USERNAME/apache-storm:develop storm version;
+        fi
 
 script:
     - echo Apache Storm version $VER
