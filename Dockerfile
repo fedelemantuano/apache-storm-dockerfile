@@ -1,14 +1,11 @@
 FROM phusion/baseimage
 
-MAINTAINER Fedele Mantuano "mantuano.fedele@gmail.com"
-
 # labels
-LABEL description="Apache Storm (all-in-one): zookeeper, nimbus, ui, supervisor" \
-    repository_url="https://github.com/fedelemantuano/apache-storm-dockerfile"
+LABEL description = "Apache Storm (all-in-one): zookeeper, nimbus, ui, supervisor"
 
 # args that can change from command line
 ARG GPG_KEY=ACEFE18DD2322E1E84587A148DE03962E80B8FFD
-ARG DISTRO_NAME=apache-storm-1.1.1
+ARG DISTRO_NAME=apache-storm-1.2.1
 
 # environment variables
 ENV STORM_CONF_DIR=/conf \
