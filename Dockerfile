@@ -1,4 +1,5 @@
-FROM phusion/baseimage
+ARG PHUSION_VERSION="latest"
+FROM phusion/baseimage:${PHUSION_VERSION}
 
 # labels
 LABEL description = "Apache Storm (all-in-one): zookeeper, nimbus, ui, supervisor"

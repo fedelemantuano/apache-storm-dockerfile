@@ -11,13 +11,13 @@ before_install:
             export VER=$(git describe --tags --abbrev=0);
 
             # make images
-            docker build -t $DOCKER_USERNAME/apache-storm .;
-            docker build -t $DOCKER_USERNAME/apache-storm:$VER .;
+            docker build --build-arg PHUSION_VERSION=$PHUSION_VERSION -t $DOCKER_USERNAME/apache-storm .;
+            docker build --build-arg PHUSION_VERSION=$PHUSION_VERSION -t $DOCKER_USERNAME/apache-storm:$VER .;
         fi
 
     - >
         if [ "$TRAVIS_BRANCH" == "develop" ]; then
-            docker build -t $DOCKER_USERNAME/apache-storm:develop .;
+            docker build --build-arg PHUSION_VERSION=$PHUSION_VERSION -t $DOCKER_USERNAME/apache-storm:develop .;
         fi
 
 script:
